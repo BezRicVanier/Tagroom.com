@@ -1,0 +1,6 @@
+file1 = open("WebInput.txt", "r")
+file2  = open("UserInput.txt", "w")
+num2 = str(file1.read())
+file2.write(str(num2))
+file1.close()
+file2.close()
