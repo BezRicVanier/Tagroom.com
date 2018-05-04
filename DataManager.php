@@ -5,8 +5,11 @@
     	fwrite($file , $text); 
     	fclose($file );
 
-	//shell_exec('Add_space.exe');
+	shell_exec('Add_space.exe');
 	shell_exec('python apple.py');
 	shell_exec('Keywordmaker.exe');
+	shell_exec('DataAnalyzer.exe');
+	
+	
 	die(header("Location: ".$_SERVER["HTTP_REFERER"]));
 ?>
