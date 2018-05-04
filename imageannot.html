@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Annotating!</title>
+</head>
+
+<body>
+
+<form action="ImageData.php" method="post">
+			Titlex1:<br><input type="text" name="x1Title" id= "x1Dis"><br>
+   	 		Titley1:<br><input type="text" name="y1Title" id= "y1Dis"><br>
+    		Titlex2:<br><input type="text" name="x2Title" id= "x2Dis"><br> 
+    		Titley2:<br><input type="text" name="y2Title" id= "y2Dis"><br>
+			<input type="submit" id="submitButton" value="Submit" />
+	  </form>
+
+<font face="georgie" size="+2">
+<div align="center">Data Annotation</div>
+<br />
+</font>
+<div align="center"><a href="index.htm">Home </a><a href="annot.html" title="Get me Annotating!" target="">Pictures</a> <a href="keywords.htm" title="Get me Annotating!" target="_blank">Keywords </a><a href="about.htm" title="Learn more about us or get in touch!">Contact Us/About</a></div>
+<table align="center" width="600" border="1">
+  <tr>
+    <td height="676"><font face="Monotype Corsiva" color="ffffff">
+ 
+		  
+        <input name="imageField" type="image" id="imageField" src="Images/sheephill.jpg" width="500" height="550" 	/>
+ 
+
+</p>
+	
+	<div id="div" hidden></div>
+    <canvas id="mycanvas" width="50" height="50"></canvas>
+	
+<style>
+		#div {
+    border: 1px dotted #000;
+    position: absolute; 
+}
+		</style>
+<script>
+		
+	
+	var div = document.getElementById('div'), x1 = 0, y1 = 0, x2 = 0, y2 = 0;
+	
+	function onDis() {
+	var x1Dis = document.getElementById('x1Dis');
+	x1Dis.value = x1;
+	
+	var y1Dis = document.getElementById('y1Dis');
+	y1Dis.value = y1;	
+	}
+	
+	function moveDis() {
+	var x2Dis = document.getElementById('x2Dis');
+	x2Dis.value = x2D;
+	
+	var y2Dis = document.getElementById('y2Dis');
+	y2Dis.value = y2D;	
+	}
+	
+	function reCalc() {
+    var x3 = Math.min(x1,x2);
+    var x4 = Math.max(x1,x2);
+   
+    var y3 = Math.min(y1,y2);
+    var y4 = Math.max(y1,y2);
+    div.style.left = x3 + 'px';
+    div.style.top = y3 + 'px';
+    div.style.width = x4 - x3 + 'px';
+    div.style.height = y4 - y3 + 'px';
+	
+}
+onmousedown = function(e) {
+	x1 = e.clientX;
+    y1 = e.clientY;
+	
+	if (x1 < 460 ) {
+		throw new Error("Plz dont label out of bounds");
+	}
+	
+	var canvas = document.getElementById('mycanvas');
+	var ctx = canvas.getContext("2d");
+	ctx.fillStyle = "#FFFFFF";
+	ctx.fillRect(0,0,500,500);
+    div.hidden = 0;
+    //x1 = e.clientX;
+    //y1 = e.clientY;
+    reCalc();
+	
+	onDis();
+};
+onmousemove = function(e) {
+    x2 = e.clientX;
+    y2 = e.clientY;
+	if (x2 < 460 ) {
+		throw new Error("Plz dont label out of bounds");
+	}
+    reCalc();
+	
+	x2D = e.clientX;
+	y2D = e.clientY;
+};
+onmouseup = function(e) {
+    div.hidden = 1;
+	var canvas = document.getElementById('mycanvas');
+	var ctx = canvas.getContext("2d");
+	ctx.fillStyle = "#FF0000";
+	ctx.fillRect(x1,y1,x2,y2);
+	moveDis();
+	
+};
+	
+	
+		</script><br>
+	  </p></td>
+  </tr>
+  <tr>
+    <td height="22">&nbsp;</td>
+  </tr>
+</table>
+<div align="center"><a href="index.htm">Home </a><a href="annot.html" title="Get me Annotating!" target="">Pictures</a> <a href="keywords.htm" title="Get me Annotating!" target="_blank">Keywords </a><a href="about.htm" title="Learn more about us or get in touch!">Contact Us/About</a></div>
+<br />
+<br />
+<div align="center"> richard.bezak@student.tdsb.on.ca 2018</div>
+</body>
+</html>
