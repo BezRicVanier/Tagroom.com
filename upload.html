@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tagroom</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">
+    <link rel="stylesheet" href="assets/css/Simple-Slider.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body style="background-color:rgb(69,97,195);height:0px;"><a class="btn btn-primary align-content-center mx-auto" role="button" href="home.html" style="font-size:24px;background-color:rgb(255,255,255);color:rgb(69,97,195);font-family:Abel, sans-serif;padding:12px;margin:0px;height:60px;width:59px;"><i class="fa fa-home"></i><br></a>
+    <a
+        class="btn btn-primary align-content-center mx-auto" role="button" href="about us.html" style="font-size:24px;background-color:rgb(255,255,255);color:rgb(69,97,195);font-family:Abel, sans-serif;padding:12px;margin:0px;height:60px;width:123px;">ABOUT US<br></a><a class="btn btn-primary align-content-center mx-auto" role="button" href="contact.html" style="font-size:24px;background-color:rgb(255,255,255);color:rgb(69,97,195);font-family:Abel, sans-serif;padding:12px;margin:0px;height:60px;width:145;">CONTACT US<br></a>
+        <a
+            class="btn btn-primary align-content-center mx-auto" role="button" href="Client.html" style="font-size:24px;background-color:rgb(255,255,255);color:rgb(69,97,195);font-family:Abel, sans-serif;padding:12px;margin:0px;height:60px;width:145px;">LOGIN<br></a><a class="btn btn-primary align-content-center mx-auto" role="button" href="register.html" style="font-size:24px;background-color:rgb(255,255,255);color:rgb(69,97,195);font-family:Abel, sans-serif;padding:12px;margin:0px;height:60px;width:145px;">REGISTER<br></a>
+            <div
+                class="jumbotron" style="background-color:rgba(233,236,239,0);margin:242px;"><img src="assets/img/ADA.png" style="width:45px;">
+                <h1 style="font-family:Abel, sans-serif;color:rgb(255,255,255);font-size:49px;height:90px;"><strong>&nbsp;Upload Files</strong></h1>
+                <h1 style="font-family:Abel, sans-serif;color:rgb(255,255,255);font-size:18px;"><strong>DATA TYPE</strong></h1><a class="btn btn-primary" role="button" href="" style="font-size:29px;background-color:rgb(255,255,255);color:rgb(69,97,195);font-family:Abel, sans-serif;"><strong>Pictures</strong><br></a><a class="btn btn-primary"
+                    role="button" href="" style="font-size:29px;background-color:rgb(255,255,255);color:rgb(69,97,195);font-family:Abel, sans-serif;"><strong>&nbsp; Video &nbsp;</strong><br></a><a class="btn btn-primary" role="button" href="" style="font-size:29px;background-color:rgb(255,255,255);color:rgb(69,97,195);font-family:Abel, sans-serif;"><strong>&nbsp; &nbsp;Audio &nbsp;&nbsp;</strong><br></a>
+                <h1
+                    class="m-auto" style="font-family:Abel, sans-serif;color:rgb(255,255,255);font-size:18px;"><br>
+					
+				  <a class="btn btn-primary" role="button" href="" onclick="document.getElementById('primaryButton').click()" style="border-radius:10px;border-width:2px;border-color:#ffffff;font-size:25pt;background-color:rgb(69,97,195);color:rgb(255,255,255);font-family:Abel, sans-serif;padding:0;margin:0px;height:53px;width:353px;"><strong>UPLOAD</strong><br></a></h1>
+				
+					<p>
+  					<input hidden="true" id="primaryButton" type="file" webkitdirectory mozdirectory />
+					</p>
+					<p>&nbsp;</p>
+					<p>&nbsp; </p>
+					
+				<form action="golash.php" method="post">
+  					<p>
+  					  <input type="radio" name="fileinput" value="Images" onclick="setValueImages()" > Images<br>
+  					<input type="radio" name="fileinput" value="Audio" onclick="setValueAudio()"> Audio<br>
+ 					<input type="radio" name="fileinput" value="Videos" onclick="setValueVideos()">Videos</p>
+  
+  					<input type="text" name="typeinput" id="textsender" hidden="true">
+  
+  					  <input type="submit" id="submitButton" value="Submit">
+					
+					<script>
+    				function setValueImages()
+						{
+        			document.getElementById('textsender').value="images";
+    					}
+      				</script>
+					
+					<script>
+    				function setValueAudio()
+						{
+        			document.getElementById('textsender').value="audio";
+    					}
+      				</script>
+					
+					<script>
+    				function setValueVideos()
+						{
+        			document.getElementById('textsender').value="images";
+    					}
+      				</script>
+					
+  					<p>&nbsp;</p>
+  					<p>&nbsp;</p>
+				</form>
+				
+				
+					<form method="post" action="C:/xampp/htdocs/uploadimages.php" enctype="multipart/form-data">
+            		<input type="file" name="my_file[]" multiple>
+            		<input type="submit" value="Upload">
+        			</form>
+				
+					
+				
+                    <p></p>
+                    <p></p>
+                    </div>
+                    <div></div>
+                    <script src="assets/js/jquery.min.js"></script>
+                    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
+                    <script src="assets/js/Simple-Slider1.js"></script>
+</body>
+
+</html>

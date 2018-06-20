@@ -1,0 +1,298 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Annotating!</title>
+</head>
+
+<body>
+
+<form id="main" action="ImageManifest.php" method="post">
+			Titlex1:<br><input type="text" name="x1Title" id= "x1Dis"><br>
+   	 		Titley1:<br><input type="text" name="y1Title" id= "y1Dis"><br>
+    		Titlex2:<br><input type="text" name="x2Title" id= "x2Dis"><br> 
+    		Titley2:<br><input type="text" name="y2Title" id= "y2Dis"><br>
+	
+			<!--   <div id="main"></div>	-->
+	
+			<input type="submit" id="submitButton" value="Submit" />
+	  </form>
+	
+      <input name="imageField" type="image" id="imageField" src="Images/sheephill.jpg" width="300" height="300" 	/>
+	
+	<div id="div" hidden></div>
+ 
+      <canvas id="mycanvas" width="50" height="50"></canvas>
+      
+      <style>
+		#div {
+    border: 1px dotted #000;
+    position: absolute; 
+}</style>
+   <!--   <div id="main"></div>	-->   
+    	
+    <script>
+		
+	var arrayLength = 0;
+	
+	var div = document.getElementById('div'), x1 = 0, y1 = 0, x2 = 0, y2 = 0;
+	
+	function onDis() {
+	var x1Dis = document.getElementById('x1Dis');
+	x1Dis.value = x1 - 7;
+	//var x1Out = document.getElementById(placeHerex1());
+	//x1Out.value = x1 - 7;
+		
+	var y1Dis = document.getElementById('y1Dis');
+	y1Dis.value = y1 - 197;
+	//var y1Out = document.getElementById(placeHerey1());
+	//y1Out.value = y1 - 197;
+		
+	placeHerex1();
+	placeHerey1();
+	}
+	
+	function moveDis() {
+	var x2Dis = document.getElementById('x2Dis');
+	x2Dis.value = x2D;
+	
+	var y2Dis = document.getElementById('y2Dis');
+	y2Dis.value = y2D;
+		
+	placeHerex2();		
+	placeHerey2();
+	}
+	
+	function reCalc() {
+    var x3 = Math.min(x1,x2);
+    var x4 = Math.max(x1,x2);
+   
+    var y3 = Math.min(y1,y2);
+    var y4 = Math.max(y1,y2);
+    div.style.left = x3 + 'px';
+    div.style.top = y3 + 'px';
+    div.style.width = x4 - x3 + 'px';
+    div.style.height = y4 - y3 + 'px';
+	
+}
+onmousedown = function(e) {
+	x1 = e.clientX;
+    y1 = e.clientY;
+	
+	boundsCheck();
+	
+	var canvas = document.getElementById('mycanvas');
+	var ctx = canvas.getContext("2d");
+	//ctx.fillStyle = "#FFFFFF";
+	//ctx.fillRect(0,0,500,500);
+    div.hidden = 0;
+    reCalc();
+	onDis();
+};
+onmousemove = function(e) {
+    x2 = e.clientX;
+    y2 = e.clientY;
+	
+    reCalc();
+	
+	if (x2 < 8 ) {
+		throw new Error("Plz dont label out of bounds");}
+	if (x2 > 308 ) {
+		throw new Error("Plz dont label out of bounds");}
+	if (y2 < 198 ) {
+		throw new Error("Plz dont label out of bounds");}
+	if (y2 > 498 ) {
+		throw new Error("Plz dont label out of bounds");}
+	
+	x2D = e.clientX - 7;
+	y2D = e.clientY - 197;
+	
+};
+onmouseup = function(e) {
+    div.hidden = 1;
+	var canvas = document.getElementById('mycanvas');
+	var ctx = canvas.getContext("2d");
+	//ctx.fillStyle = "#FF0000";
+	//ctx.fillRect(x1,y1,x2,y2);
+	
+	if (x2 < 8 ) {
+		throw new Error("Plz dont label out of bounds");}
+	if (x2 > 308 ) {
+		throw new Error("Plz dont label out of bounds");}
+	if (y2 < 198 ) {
+		throw new Error("Plz dont label out of bounds");}
+	if (y2 > 498 ) {
+		throw new Error("Plz dont label out of bounds");}
+	
+	moveDis();
+	
+};
+		
+	function boundsCheck() {
+		
+	if (x2 < 8 ) {
+		throw new Error("Plz dont label out of bounds");}
+	if (x2 > 308 ) {
+		throw new Error("Plz dont label out of bounds");}
+	if (y2 < 198 ) {
+		throw new Error("Plz dont label out of bounds");}
+	if (y2 > 498 ) {
+		throw new Error("Plz dont label out of bounds");}
+		
+	}
+		
+	window.onload = function loopRadioButton(){
+		
+	//alert("job started");
+		
+	var main = document.getElementById("main");
+
+	var tags = new Array(5);
+	tags[0] = "test1";
+	tags[1] = "test2";
+	tags[2] = "test3";
+	tags[3] = "test4";
+	
+	var iniTextElement = document.createElement("input");
+	iniTextElement.setAttribute('type', 'text');
+	iniTextElement.setAttribute('id', 'ArrayIniText');
+	iniTextElement.setAttribute('value', tags.length);
+	iniTextElement.setAttribute('name', 'ArrayIniText');
+	iniTextElement.setAttribute('hidden', 'true');
+	
+		
+	//alert("continuing job");
+		
+	main.appendChild(iniTextElement);
+	
+	for (var i = 0; i < tags.length; i++) {
+		var radioElement = document.createElement("input");
+		radioElement.setAttribute('type', 'radio');
+		radioElement.setAttribute('id', 'radio' + i);
+		radioElement.setAttribute('value', tags[i]);
+		radioElement.setAttribute('name', 'tagOptions');
+		
+		var tagName = document.createElement("input");
+		tagName.setAttribute('type', 'text');
+		tagName.setAttribute('id', 'tagName' + i);
+		tagName.setAttribute('name', 'tagName' + i);
+		tagName.setAttribute('value', tags[i]);
+		tagName.setAttribute('readonly', 'true');;
+		
+
+		//alert("continuing job 2");
+		
+		var x1textElement = document.createElement("input");
+		x1textElement.setAttribute('type', 'text');
+		x1textElement.setAttribute('id', 'x1text' + i);
+		x1textElement.setAttribute('name', 'x1text' + i);
+		//x1textElement.setAttribute('hidden', 'true');
+		
+		//alert("continuing job 3");
+		
+		var y1textElement = document.createElement("input");
+		y1textElement.setAttribute('type', 'text');
+		y1textElement.setAttribute('id', 'y1text' + i);
+		y1textElement.setAttribute('name', 'y1text' + i);
+		//y1textElement.setAttribute('hidden', 'true');
+		
+		var x2textElement = document.createElement("input");
+		x2textElement.setAttribute('type', 'text');
+		x2textElement.setAttribute('id', 'x2text' + i);
+		x2textElement.setAttribute('name', 'x2text' + i);
+		//x2textElement.setAttribute('hidden', 'true');
+		
+		var y2textElement = document.createElement("input");
+		y2textElement.setAttribute('type', 'text');
+		y2textElement.setAttribute('id', 'y2text' + i);
+		y2textElement.setAttribute('name', 'y2text' + i);
+		//y2textElement.setAttribute('hidden', 'true');
+		
+		//alert("continuing job 6");
+	
+		main.appendChild(radioElement);
+		main.appendChild(tagName);
+		
+		main.appendChild(x1textElement);
+		main.appendChild(y1textElement);
+		main.appendChild(x2textElement);
+		main.appendChild(y2textElement);
+		
+		//alert("continuing job 7");
+			
+	}
+	//alert("there ya go, troubles over");
+	arrayLength = tags.length;
+	return arrayLength;
+} 
+
+	
+function placeHerex1(){
+
+	for (var a = 0; a < arrayLength; a++) {
+
+		var placeInput = document.getElementById("radio" + a);
+		if (placeInput.checked) {
+			var placeOutx1Id = document.getElementById("x1text" + a);
+			placeOutx1Id.value = x1 - 7;
+			break;
+		}	
+		
+		//return placeOutx1Id;
+
+	}
+}
+		
+function placeHerex2(){
+	
+	for (var b = 0; b < arrayLength; b++) {
+		
+		var placeInput = document.getElementById("radio" + b);
+		if (placeInput.checked) {
+			var placeOutx2Id = document.getElementById("x2text" + b);
+			placeOutx2Id.value = x2;
+			break;
+		}	
+		
+		//return placeOutx2Id;
+	}
+} 
+		
+		
+function placeHerey1(){
+	
+	for (var c = 0; c < arrayLength; c++) {
+		
+		var placeInput = document.getElementById("radio" + c); 
+		if (placeInput.checked) {
+			var placeOuty1Id = document.getElementById("y1text" + c);
+			placeOuty1Id.value = y1;
+			break;
+		}	
+		
+		//return placeOuty1Id;
+	}
+} 
+		
+		
+function placeHerey2(){
+	
+	for (var d = 0; d < arrayLength; d++) {
+		
+		var placeInput = document.getElementById("radio" + d);
+		if (placeInput.checked) {
+			var placeOuty2Id = document.getElementById("y2text" + d);
+			placeOuty2Id.value = y2;
+			
+			break;
+		}	
+		
+		//return placeOuty2Id;
+	}
+} 
+	
+</script>
+		
+<div id="credit" align="center"> richard.bezak@student.tdsb.on.ca 2018</div>
+</body>
+</html>

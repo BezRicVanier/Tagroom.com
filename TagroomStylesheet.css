@@ -1,0 +1,87 @@
+body
+{
+background-color:rgb(69,97,195);
+font-family:"Abel Regular";
+font-size:24px;
+color:rgb(255,255,255);
+text-align:center;
+}
+
+.tagbutton {
+    background-color: #fff;
+    border: none;
+    color: rgb(69,97,195);
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    font-family:"Abel Regular";
+    border-radius: .25rem;
+    font-size: 24px;
+}
+
+label.taglabel {
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-family:"Abel Regular";
+    font-size: 24px;
+}
+
+.tagsubmit {
+    background-color: rgb(69,97,195);
+    border: #fff;
+    color: #fff;
+    padding: 12px 15px;
+    text-align: center;
+    text-decoration: none;
+    font-family:"Abel Regular";
+    border-radius: .25rem;
+    font-size: 24px;
+    border-style: solid;
+    border-width: 2px;
+}
+
+.taginput{
+
+    margin:0;
+
+    padding: 12px 15px;
+    font-family:"Abel Regular";
+    font-size:1rem;
+
+    font-weight:400;
+
+    line-height:1.5;
+
+    color:#212529;
+
+    text-align:center;
+
+    font-size:20px;
+    background-color:#fff;
+
+}
+
+
+
+.tagforminput{
+
+    margin:0;
+
+    padding: 0px 15px;
+    font-family:"Abel Regular";
+    font-size:1rem;
+
+    font-weight:400;
+
+    line-height:1.5;
+
+    color:#212529;
+
+    text-align:center;
+
+    font-size:15px;
+    background-color:#fff;
+
+}
+
